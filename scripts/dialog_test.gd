@@ -1,3 +1,5 @@
+#A code by: KeichiTS - 2024
+
 extends Area2D
 
 const lines: Array[String] = [

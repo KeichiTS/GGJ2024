@@ -1,3 +1,5 @@
+#A code by: DashNothing - 2023 _ Modified by: KeichiTS - 2024
+
 extends Node
 
 @onready var text_box_scene = preload("res://scenes/text_box.tscn")
