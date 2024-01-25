@@ -1,8 +1,6 @@
-#Code by: KeichiTS - 2023
-
+#Code by: KeichiTS - 2024
 
 extends CharacterBody2D
-
 
 @export var speed : int = 300
 @export var jump_velocity : int = -1000
@@ -15,17 +13,6 @@ var move_status = on_ground
 
 enum{dead,alive}
 var status = alive
-
-var is_holding = false 
-var can_hold = false
-
-
-
-var time = 5
-
-var play_dead_sound = false 
-
-
 
 func _physics_process(delta):
 	_move(delta)
@@ -108,6 +95,3 @@ func _on_coyote_time_timeout():
 ###################################################
 #               ~ KeichiTS - 2024 ~               #
 ###################################################
-
-
-
