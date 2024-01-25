@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=3 uid="uid://b08edfre7tjm8"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_mne0d"]
+[ext_resource type="Texture2D" uid="uid://dociqot8k2wnr" path="res://assets/player_sprites/Player.png" id="2_euxm4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u7tt"]
+size = Vector2(76, 114)
+
+[sub_resource type="Animation" id="Animation_3618c"]
+resource_name = "Jumping"
+length = 0.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 23, 0]
+}
+
+[sub_resource type="Animation" id="Animation_rvp58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qwaik"]
+resource_name = "dying"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 22, 21, 13]
+}
+
+[sub_resource type="Animation" id="Animation_bxvqh"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_10kp2"]
+resource_name = "walking"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aj4pq"]
+_data = {
+"Jumping": SubResource("Animation_3618c"),
+"RESET": SubResource("Animation_rvp58"),
+"dying": SubResource("Animation_qwaik"),
+"idle": SubResource("Animation_bxvqh"),
+"walking": SubResource("Animation_10kp2")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+safe_margin = 0.001
+script = ExtResource("1_mne0d")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("2_euxm4")
+hframes = 8
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(5, 23)
+shape = SubResource("RectangleShape2D_1u7tt")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aj4pq")
+}
+
+[node name="CoyoteTime" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.08
+one_shot = true
+
+[connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]
