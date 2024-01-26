@@ -3,8 +3,8 @@
 extends CharacterBody2D
 
 @export var speed : int = 300
-@export var jump_velocity : int = -1000
-@export var gravity : int = 4000
+@export var jump_velocity : int = -1500
+@export var gravity : int = 4500
 
 var coyote_jump = false
 
@@ -26,28 +26,16 @@ func _move(x):
 		else: 
 			move_status = on_ground
 			
-		if status == alive:
-			if is_on_floor() or coyote_jump:
-				if Input.is_action_just_pressed("ui_jump"):
-					velocity.y = jump_velocity
-					coyote_jump = false
+		if is_on_floor() or coyote_jump:
+			if Input.is_action_just_pressed("ui_jump"):
+				velocity.y = jump_velocity
+				coyote_jump = false
 
-			var direction = Input.get_axis("ui_left", "ui_right")
-			if direction:
-				velocity.x = direction * speed
-			else:
-				velocity.x = move_toward(velocity.x, 0, speed)
-		
 		var was_on_floor = is_on_floor()
 		
 		
 		move_and_slide()
 		
-		var left_ground = not is_on_floor() and was_on_floor
-		if left_ground and velocity.y >= 0:
-			print("pulou")
-			coyote_jump = true
-			$CoyoteTime.start()
 	
 func _chance_anim():
 	#if status == alive:
@@ -65,11 +53,10 @@ func _chance_anim():
 			else:
 				$sprite.scale.x = -10
 
-				
-func _on_coyote_time_timeout():
-	coyote_jump = false
-			
 
+func _death():
+	print('morreu')
+	get_tree().reload_current_scene()
 
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dociqot8k2wnr" path="res://assets/player_sprites/Player.png" id="2_euxm4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u7tt"]
-size = Vector2(76, 114)
+size = Vector2(28, 45)
 
 [sub_resource type="Animation" id="Animation_3618c"]
 resource_name = "Jumping"
@@ -98,18 +98,18 @@ _data = {
 "walking": SubResource("Animation_10kp2")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D"]
 z_index = 1
 safe_margin = 0.001
 script = ExtResource("1_mne0d")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(10, 10)
+scale = Vector2(4, 4)
 texture = ExtResource("2_euxm4")
 hframes = 8
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(5, 23)
+position = Vector2(2, 9.5)
 shape = SubResource("RectangleShape2D_1u7tt")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -117,10 +117,3 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 libraries = {
 "": SubResource("AnimationLibrary_aj4pq")
 }
-
-[node name="CoyoteTime" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.08
-one_shot = true
-
-[connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]

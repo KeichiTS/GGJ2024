@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxg7w07kig4nm"]
+
+[ext_resource type="PackedScene" uid="uid://b08edfre7tjm8" path="res://scenes/player.tscn" id="1_nq4t8"]
+[ext_resource type="Script" path="res://scripts/runner/runner.gd" id="1_qyw5y"]
+[ext_resource type="PackedScene" uid="uid://rf217wmv2wjv" path="res://scenes/runner/spawner.tscn" id="2_5uhie"]
+[ext_resource type="FontFile" uid="uid://cpxc3ih7dbm0w" path="res://font/minimal5x7.ttf" id="2_bwiq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2iwbn"]
+size = Vector2(970, 40)
+
+[node name="Runner" type="Node"]
+script = ExtResource("1_qyw5y")
+
+[node name="Time_left" type="Label" parent="."]
+offset_left = 368.0
+offset_top = 8.0
+offset_right = 473.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_bwiq7")
+theme_override_font_sizes/font_size = 24
+text = "Time Left : XX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Body" type="StaticBody2D" parent="."]
+position = Vector2(-8, -272)
+
+[node name="shape" type="CollisionShape2D" parent="Body"]
+position = Vector2(475, 519)
+shape = SubResource("RectangleShape2D_2iwbn")
+
+[node name="sprite" type="ColorRect" parent="Body"]
+offset_top = 499.0
+offset_right = 960.0
+offset_bottom = 539.0
+
+[node name="Player" parent="." instance=ExtResource("1_nq4t8")]
+position = Vector2(48, 152)
+jump_velocity = -1200
+gravity = 6000
+
+[node name="Spawner" parent="." instance=ExtResource("2_5uhie")]
+position = Vector2(528, 88)
+
+[node name="Counting_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Counting_timer" to="." method="_on_counting_timer_timeout"]

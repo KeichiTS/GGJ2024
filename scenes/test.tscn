@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://du67rvn502qnj"]
+[gd_scene load_steps=6 format=3 uid="uid://du67rvn502qnj"]
 
 [ext_resource type="PackedScene" uid="uid://b08edfre7tjm8" path="res://scenes/player.tscn" id="1_1h33p"]
 [ext_resource type="Script" path="res://scripts/dialog_test.gd" id="2_37vuv"]
+[ext_resource type="PackedScene" uid="uid://rf217wmv2wjv" path="res://scenes/runner/spawner.tscn" id="4_3xeep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fiap"]
 size = Vector2(970, 40)
@@ -12,7 +13,7 @@ size = Vector2(278, 207)
 [node name="Test" type="Node"]
 
 [node name="Body" type="StaticBody2D" parent="."]
-position = Vector2(5, -49)
+position = Vector2(9, -270)
 
 [node name="shape" type="CollisionShape2D" parent="Body"]
 position = Vector2(475, 519)
@@ -24,13 +25,19 @@ offset_right = 960.0
 offset_bottom = 539.0
 
 [node name="Player" parent="." instance=ExtResource("1_1h33p")]
-position = Vector2(507, -187)
+position = Vector2(93, 58)
+jump_velocity = -1200
+gravity = 6000
 
 [node name="Start_dialog" type="Area2D" parent="."]
+visible = false
 script = ExtResource("2_37vuv")
 
 [node name="shape" type="CollisionShape2D" parent="Start_dialog"]
 position = Vector2(146, 394)
 shape = SubResource("RectangleShape2D_fi5t2")
+
+[node name="Spawner" parent="." instance=ExtResource("4_3xeep")]
+position = Vector2(529, 86)
 
 [connection signal="body_entered" from="Start_dialog" to="Start_dialog" method="_on_body_entered"]

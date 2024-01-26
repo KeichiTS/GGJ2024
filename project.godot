@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GGJ2024"
-run/main_scene="res://scenes/test.tscn"
+run/main_scene="res://scenes/runner/runner.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,8 +21,8 @@ DialogManager="*res://singleton/Dialog_Manager.gd"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=480
+window/size/viewport_height=270
 window/stretch/mode="viewport"
 window/handheld/orientation=1
 
