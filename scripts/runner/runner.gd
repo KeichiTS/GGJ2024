@@ -17,7 +17,7 @@ func _on_counting_timer_timeout():
 			$Spawner.queue_free()
 			
 		####### Acrescentar a transição aqui 
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file('res://scenes/plot_scenes/whack_a_mole_dialog.tscn')
 
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #

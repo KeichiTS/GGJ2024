@@ -10,7 +10,7 @@ func _ready():
 	$bar_anim.play('event')
 
 
-func _process(delta):
+func _physics_process(delta):
 	if Input.is_action_just_pressed("advance_dialog") and paused == false:
 		dwarves_counter += 1
 		points += bar_points
@@ -20,23 +20,20 @@ func _process(delta):
 		$pause_timer.start()
 
 func _on_area_1_area_entered(area):
-	if area.name == 'bar':
-		print('entrou')
+	#if area.name == 'bar':
 		bar_points = 5
 
 func _on_area_2_area_entered(area):
-	if area.name == 'bar':
-		print('entrou2')
+	#if area.name == 'bar':
 		bar_points = 2
 
 func _on_area_3_area_entered(area):
 	if area.name == 'bar':
-		print('entrou3')
 		bar_points = 0
 
 
 func _on_area_1_area_exited(area):
-	if area.name == 'bar':
+	#if area.name == 'bar':
 		bar_points = 2
 
 func _on_pause_time_timeout():
@@ -45,7 +42,7 @@ func _on_pause_time_timeout():
 	if dwarves_counter == 7: 
 		
 		if points >= 15:
-			get_tree().change_scene_to_file("res://scenes/plot_scenes/intro.tscn")
+			get_tree().change_scene_to_file("res://scenes/end/end.tscn")
 		else:	
 			get_tree().reload_current_scene()
 		

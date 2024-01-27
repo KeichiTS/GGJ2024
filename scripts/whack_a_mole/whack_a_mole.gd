@@ -18,7 +18,7 @@ func _on_counting_timer_timeout():
 
 	if time_left == 0:
 		if points >= 50:
-			get_tree().change_scene_to_file("res://scenes/runner/runner.tscn")
+			get_tree().change_scene_to_file("res://scenes/plot_scenes/whip_dwarf_dialog.tscn")
 			return
 			
 		get_tree().reload_current_scene()

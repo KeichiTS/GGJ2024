@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu8tbik0pgmcx"]
 
-[ext_resource type="Script" path="res://scenes/plot_scenes/intro.gd" id="1_vt7oc"]
+[ext_resource type="Script" path="res://scripts/plot_scenes/intro.gd" id="1_vt7oc"]
 [ext_resource type="PackedScene" uid="uid://b5ncmqsb7sm7r" path="res://scenes/dialog/dialog_system.tscn" id="2_pctck"]
 
 [node name="intro" type="Node"]

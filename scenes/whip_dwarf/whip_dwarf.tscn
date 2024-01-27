@@ -5,19 +5,20 @@
 [ext_resource type="FontFile" uid="uid://cpxc3ih7dbm0w" path="res://font/minimal5x7.ttf" id="3_njebh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8336"]
-size = Vector2(24, 7)
+size = Vector2(24, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f88u0"]
-size = Vector2(24, 47)
+size = Vector2(24, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ku6yd"]
-size = Vector2(24, 56)
+size = Vector2(24, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h371u"]
 size = Vector2(24, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmns2"]
-size = Vector2(24, 1)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4wx4o"]
+a = Vector2(10, 0)
+b = Vector2(-10, 0)
 
 [sub_resource type="Animation" id="Animation_5kka7"]
 length = 0.001
@@ -113,7 +114,8 @@ offset_bottom = 136.0
 color = Color(0.988235, 0, 0, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area1"]
-position = Vector2(60, 132.5)
+z_index = 1
+position = Vector2(60, 128)
 shape = SubResource("RectangleShape2D_l8336")
 
 [node name="Area2" type="Area2D" parent="."]
@@ -133,11 +135,13 @@ offset_bottom = 120.0
 color = Color(0.945098, 0.894118, 0, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area2"]
-position = Vector2(60, 160.5)
+z_index = 1
+position = Vector2(60, 160)
 shape = SubResource("RectangleShape2D_f88u0")
 
 [node name="shape2" type="CollisionShape2D" parent="Area2"]
-position = Vector2(60, 100)
+z_index = 1
+position = Vector2(60, 96)
 shape = SubResource("RectangleShape2D_ku6yd")
 
 [node name="Area3" type="Area2D" parent="."]
@@ -158,10 +162,12 @@ offset_bottom = 232.0
 color = Color(0, 0.992157, 0.992157, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area3"]
+z_index = 1
 position = Vector2(59, 48)
 shape = SubResource("RectangleShape2D_h371u")
 
 [node name="shape2" type="CollisionShape2D" parent="Area3"]
+z_index = 1
 position = Vector2(59, 208)
 shape = SubResource("RectangleShape2D_h371u")
 
@@ -173,8 +179,9 @@ offset_right = 24.0
 offset_bottom = 4.0
 
 [node name="shape" type="CollisionShape2D" parent="bar"]
+z_index = 1
 position = Vector2(12, 2)
-shape = SubResource("RectangleShape2D_xmns2")
+shape = SubResource("SegmentShape2D_4wx4o")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="bar_anim" type="AnimationPlayer" parent="."]

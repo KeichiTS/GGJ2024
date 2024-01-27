@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkqegor0jtsyp"]
+
+[ext_resource type="Script" path="res://scripts/plot_scenes/final_dialog.gd" id="1_4mw4r"]
+[ext_resource type="PackedScene" uid="uid://b5ncmqsb7sm7r" path="res://scenes/dialog/dialog_system.tscn" id="2_bebqq"]
+
+[node name="final_dialog" type="Node"]
+script = ExtResource("1_4mw4r")
+
+[node name="dialog_system" parent="." instance=ExtResource("2_bebqq")]
