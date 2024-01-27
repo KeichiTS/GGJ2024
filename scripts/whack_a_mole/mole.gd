@@ -5,7 +5,9 @@ extends Button
 var happy : bool = true
 
 func _ready():
-	_mole_action()
+	randomize()
+	$timer.wait_time = randf_range(3,7)
+	$timer.start()
 	
 func _on_pressed():
 	if happy == true:
