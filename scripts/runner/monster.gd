@@ -1,3 +1,5 @@
+#Code by: KeichiTS - 2024
+
 extends CharacterBody2D
 
 var speed : int = -500

@@ -1,3 +1,5 @@
+#Code by: KeichiTS - 2024
+
 extends Node
 
 @export var time_left : int = 60

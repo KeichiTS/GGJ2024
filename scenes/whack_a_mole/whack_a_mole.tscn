@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc0buvmgf4xtg"]
+
+[ext_resource type="Script" path="res://scripts/whack_a_mole/whack_a_mole.gd" id="1_kcak3"]
+[ext_resource type="Script" path="res://scripts/whack_a_mole/mole_test.gd" id="2_ruubn"]
+[ext_resource type="Texture2D" uid="uid://dffnwy2kwhwh4" path="res://icon.svg" id="3_0ifio"]
+
+[sub_resource type="Animation" id="Animation_18ll0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6nt77"]
+resource_name = "event"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(120, 120), Vector2(120, 64), Vector2(120, 64), Vector2(120, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.7, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ls0l8"]
+_data = {
+"RESET": SubResource("Animation_18ll0"),
+"event": SubResource("Animation_6nt77")
+}
+
+[sub_resource type="Animation" id="Animation_miby5"]
+resource_name = "event"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0.0156863, 1), Color(1, 1, 0.929412, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lv288"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0.929412, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2tn3"]
+_data = {
+"RESET": SubResource("Animation_lv288"),
+"event": SubResource("Animation_miby5")
+}
+
+[node name="Whack_a_mole" type="Node"]
+script = ExtResource("1_kcak3")
+
+[node name="Layer1" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 64.0
+
+[node name="Layer2" type="ColorRect" parent="."]
+offset_top = 64.0
+offset_right = 480.0
+offset_bottom = 128.0
+
+[node name="mole" type="Button" parent="."]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 256.0
+offset_bottom = 256.0
+scale = Vector2(0.5, 0.5)
+disabled = true
+icon = ExtResource("3_0ifio")
+script = ExtResource("2_ruubn")
+
+[node name="sprite" type="ColorRect" parent="mole"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 126.0
+offset_bottom = 80.0
+mouse_filter = 1
+color = Color(1, 1, 0.929412, 1)
+
+[node name="anim" type="AnimationPlayer" parent="mole"]
+libraries = {
+"": SubResource("AnimationLibrary_ls0l8")
+}
+
+[node name="anim2" type="AnimationPlayer" parent="mole"]
+libraries = {
+"": SubResource("AnimationLibrary_e2tn3")
+}
+
+[node name="timer" type="Timer" parent="mole"]
+wait_time = 5.0
+autostart = true
+
+[node name="Layer3" type="ColorRect" parent="."]
+offset_top = 128.0
+offset_right = 480.0
+offset_bottom = 192.0
+
+[node name="Layer4" type="ColorRect" parent="."]
+offset_top = 192.0
+offset_right = 480.0
+offset_bottom = 272.0
+
+[connection signal="mouse_entered" from="mole" to="mole" method="_on_mouse_entered"]
+[connection signal="pressed" from="mole" to="mole" method="_on_pressed"]
+[connection signal="timeout" from="mole/timer" to="mole" method="_on_timer_timeout"]

@@ -1,3 +1,5 @@
+#Code by: KeichiTS - 2024
+
 extends Area2D
 
 var monster = preload("res://scenes/runner/monster.tscn")
