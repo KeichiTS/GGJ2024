@@ -38,11 +38,11 @@ func _move(x):
 		
 	
 func _chance_anim():
-	#if status == alive:
-			#if move_status == on_ground and velocity.x == 0:
-				#$anim.play("idle")
-			#elif move_status == on_ground and velocity.x != 0:
-				#$anim.play('walking')
+	if status == alive:
+			if move_status == on_ground:
+				$anim.play("walking")
+			#if move_status == on_ground and velocity.x != 0:
+			#	$anim.play('walking')
 			#elif move_status == on_air:
 				#$anim.play("Jumping")
 			

@@ -3,9 +3,16 @@
 extends CharacterBody2D
 
 var speed : int = -500
+var on_ground : bool = true 
 
 func _ready():
 	velocity.x = speed
+	if on_ground:
+		$sprite.play('default')
+		$sprite2.queue_free()
+	else:
+		$sprite2.play('default')
+		$sprite.queue_free()
 
 func _process(delta):
 	move_and_slide()

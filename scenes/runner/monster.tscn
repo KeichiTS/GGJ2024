@@ -1,22 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://5jq8gqht863l"]
+[gd_scene load_steps=7 format=3 uid="uid://5jq8gqht863l"]
 
 [ext_resource type="Script" path="res://scripts/runner/monster.gd" id="1_fegse"]
+[ext_resource type="Texture2D" uid="uid://dnfnuhpbioenh" path="res://assets/runner/bird.png" id="2_8ionb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2k6t"]
+atlas = ExtResource("2_8ionb")
+region = Rect2(0, 0, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmw23"]
+atlas = ExtResource("2_8ionb")
+region = Rect2(64, 0, 64, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_la3l0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2k6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmw23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvna7"]
 size = Vector2(32, 32)
 
 [node name="Monster" type="CharacterBody2D"]
+position = Vector2(0, -11)
 script = ExtResource("1_fegse")
 
-[node name="sprite" type="ColorRect" parent="."]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_la3l0")
+animation = &""
+
+[node name="sprite2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_la3l0")
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="shape" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_xvna7")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

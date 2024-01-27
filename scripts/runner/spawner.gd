@@ -17,8 +17,10 @@ func spawn_monster():
 	var mob = monster.instantiate()
 	if monster_type == 0:
 		mob.position = Vector2(0,64)
+		mob.on_ground = false
 	else:
-		mob.position = Vector2(0,128)
+		mob.position = Vector2(0,118)
+		mob.on_ground = true
 	add_child(mob)
 	
 ###################################################
