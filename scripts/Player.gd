@@ -55,7 +55,6 @@ func _chance_anim():
 
 
 func _death():
-	print('morreu')
 	get_tree().reload_current_scene()
 
 ###################################################

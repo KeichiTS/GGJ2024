@@ -15,7 +15,6 @@ func _on_timer_timeout():
 func spawn_monster():
 	var monster_type : int = randi_range(0,3)
 	var mob = monster.instantiate()
-	print(monster_type)
 	if monster_type == 0:
 		mob.position = Vector2(0,64)
 	else:
