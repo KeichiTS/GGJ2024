@@ -1,20 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxg7w07kig4nm"]
+[gd_scene load_steps=11 format=3 uid="uid://dxg7w07kig4nm"]
 
 [ext_resource type="PackedScene" uid="uid://b08edfre7tjm8" path="res://scenes/runner/player.tscn" id="1_nq4t8"]
 [ext_resource type="Script" path="res://scripts/runner/runner.gd" id="1_qyw5y"]
 [ext_resource type="PackedScene" uid="uid://rf217wmv2wjv" path="res://scenes/runner/spawner.tscn" id="2_5uhie"]
 [ext_resource type="FontFile" uid="uid://cpxc3ih7dbm0w" path="res://font/minimal5x7.ttf" id="2_bwiq7"]
+[ext_resource type="Texture2D" uid="uid://emypnlubdxbr" path="res://assets/runner/bg_dloresta_fundo.png" id="2_gxo40"]
+[ext_resource type="Texture2D" uid="uid://i04sl2mtl4a3" path="res://assets/runner/bg_dloresta_arvores.png" id="3_hdv5s"]
+[ext_resource type="Texture2D" uid="uid://5ghnw7pveaup" path="res://assets/runner/bg_dloresta_arbustos e grama.png" id="4_4lm6j"]
+[ext_resource type="Script" path="res://scripts/runner/parallax.gd" id="4_y71kn"]
+[ext_resource type="Texture2D" uid="uid://uqx1vjoaqdj0" path="res://assets/runner/bg_dloresta_Chão.png" id="5_28n7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iwbn"]
-size = Vector2(970, 40)
+size = Vector2(970, 32)
 
 [node name="Runner" type="Node"]
 script = ExtResource("1_qyw5y")
 
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Back" type="Sprite2D" parent="Background"]
+position = Vector2(210, 135)
+texture = ExtResource("2_gxo40")
+
+[node name="Forrest" type="Sprite2D" parent="Background"]
+texture = ExtResource("3_hdv5s")
+centered = false
+script = ExtResource("4_y71kn")
+speed = -0.2
+
+[node name="Forrest2" type="Sprite2D" parent="Background"]
+position = Vector2(420, 0)
+texture = ExtResource("3_hdv5s")
+centered = false
+script = ExtResource("4_y71kn")
+speed = -0.2
+
+[node name="Bushes" type="Sprite2D" parent="Background"]
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+texture = ExtResource("4_4lm6j")
+centered = false
+script = ExtResource("4_y71kn")
+speed = -1.0
+
+[node name="Bushes2" type="Sprite2D" parent="Background"]
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+position = Vector2(420, 0)
+texture = ExtResource("4_4lm6j")
+centered = false
+script = ExtResource("4_y71kn")
+speed = -1.0
+
+[node name="Ground" type="Sprite2D" parent="Background"]
+position = Vector2(210, 136)
+texture = ExtResource("5_28n7c")
+
 [node name="Time_left" type="Label" parent="."]
-offset_left = 368.0
+offset_left = 312.0
 offset_top = 8.0
-offset_right = 473.0
+offset_right = 417.0
 offset_bottom = 31.0
 theme_override_fonts/font = ExtResource("2_bwiq7")
 theme_override_font_sizes/font_size = 24
@@ -26,13 +69,8 @@ vertical_alignment = 1
 position = Vector2(-8, -272)
 
 [node name="shape" type="CollisionShape2D" parent="Body"]
-position = Vector2(475, 519)
+position = Vector2(475, 528)
 shape = SubResource("RectangleShape2D_2iwbn")
-
-[node name="sprite" type="ColorRect" parent="Body"]
-offset_top = 499.0
-offset_right = 960.0
-offset_bottom = 539.0
 
 [node name="Player" parent="." instance=ExtResource("1_nq4t8")]
 position = Vector2(48, 152)

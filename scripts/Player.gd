@@ -14,6 +14,8 @@ var move_status = on_ground
 enum{dead,alive}
 var status = alive
 
+var on_jumping : bool = false
+
 func _physics_process(delta):
 	_move(delta)
 	_chance_anim()
@@ -39,12 +41,17 @@ func _move(x):
 	
 func _chance_anim():
 	if status == alive:
-			if move_status == on_ground:
+			if move_status == on_ground and on_jumping == false:
 				$anim.play("walking")
 			#if move_status == on_ground and velocity.x != 0:
 			#	$anim.play('walking')
-			#elif move_status == on_air:
-				#$anim.play("Jumping")
+			elif move_status == on_air:
+				if on_jumping == false:
+					print('entrou')
+					on_jumping = true
+					$anim.play("Jumping")
+					await $anim.animation_finished
+					on_jumping = false
 			
 			if velocity.x > 0: 
 				$sprite.scale.x = 10

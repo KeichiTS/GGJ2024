@@ -1,7 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://5jq8gqht863l"]
+[gd_scene load_steps=11 format=3 uid="uid://5jq8gqht863l"]
 
 [ext_resource type="Script" path="res://scripts/runner/monster.gd" id="1_fegse"]
+[ext_resource type="Texture2D" uid="uid://bdo7ds3he2h00" path="res://assets/runner/anao.png" id="2_1hhgd"]
 [ext_resource type="Texture2D" uid="uid://dnfnuhpbioenh" path="res://assets/runner/bird.png" id="2_8ionb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol54l"]
+atlas = ExtResource("2_1hhgd")
+region = Rect2(0, 0, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2tm5"]
+atlas = ExtResource("2_1hhgd")
+region = Rect2(64, 0, 64, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_la3l0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol54l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2tm5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2k6t"]
 atlas = ExtResource("2_8ionb")
@@ -11,7 +34,7 @@ region = Rect2(0, 0, 64, 40)
 atlas = ExtResource("2_8ionb")
 region = Rect2(64, 0, 64, 40)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_la3l0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgr41"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -33,12 +56,10 @@ position = Vector2(0, -11)
 script = ExtResource("1_fegse")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_la3l0")
-animation = &""
 
 [node name="sprite2" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_la3l0")
+sprite_frames = SubResource("SpriteFrames_jgr41")
 
 [node name="hitbox" type="Area2D" parent="."]
 

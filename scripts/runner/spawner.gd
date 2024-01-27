@@ -16,11 +16,11 @@ func spawn_monster():
 	var monster_type : int = randi_range(0,3)
 	var mob = monster.instantiate()
 	if monster_type == 0:
-		mob.position = Vector2(0,64)
 		mob.on_ground = false
+		mob.position = Vector2(0,64)
 	else:
-		mob.position = Vector2(0,118)
 		mob.on_ground = true
+		mob.position = Vector2(0,132)
 	add_child(mob)
 	
 ###################################################

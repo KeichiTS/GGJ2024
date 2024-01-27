@@ -9,10 +9,11 @@ func _ready():
 	velocity.x = speed
 	if on_ground:
 		$sprite.play('default')
-		$sprite2.queue_free()
+		$sprite2.hide()
+
 	else:
 		$sprite2.play('default')
-		$sprite.queue_free()
+		$sprite.hide()
 
 func _process(delta):
 	move_and_slide()
