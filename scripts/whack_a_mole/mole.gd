@@ -12,6 +12,8 @@ func _ready():
 func _on_pressed():
 	if happy == true:
 		$anim2.play('event')
+		if get_parent().get_parent().has_method('_add_points'):
+			get_parent().get_parent()._add_points()
 		happy = false
 
 

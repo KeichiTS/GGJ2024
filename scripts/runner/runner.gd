@@ -18,3 +18,5 @@ func _on_counting_timer_timeout():
 			
 		####### Acrescentar a transição aqui 
 		get_tree().reload_current_scene()
+
+
