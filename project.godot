@@ -23,7 +23,7 @@ general/balloon_path="res://dialog/balloon.tscn"
 
 window/size/viewport_width=420
 window/size/viewport_height=270
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
 [input]
@@ -52,3 +52,4 @@ locale/translations_pot_files=PackedStringArray("res://dialog/main.dialogue")
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=1
