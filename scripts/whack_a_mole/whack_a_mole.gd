@@ -10,6 +10,7 @@ var points : int = 00
 func _ready():
 	$Points.text = "Points: " + str(points)
 	$Time_left.text = "Time Left: " + str(time_left)
+	
 
 func _on_counting_timer_timeout():
 	if time_left > 0:

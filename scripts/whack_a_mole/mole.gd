@@ -1,29 +1,36 @@
 #Code by: KeichiTS - 2024
 
-extends Button
+extends Node2D
 
 var happy : bool = true
+var falix_the_cat :bool = false
 
 func _ready():
 	randomize()
-	$timer.wait_time = randf_range(3,7)
-	$timer.start()
+	$mole/timer.wait_time = randf_range(3,7)
+	$mole/timer.start()
 	
-func _on_pressed():
+	
+func _on_mole_pressed():
 	if happy == true:
-		$anim2.play('event')
-		if get_parent().get_parent().has_method('_add_points'):
-			get_parent().get_parent()._add_points()
+		$mole/anim2.play('event')
+		if get_parent().has_method('_add_points'):
+			get_parent()._add_points()
 		happy = false
 
-
 func _on_timer_timeout():
+	var change : float = randf_range(0,1)
+	if change < 0.95:
+		$mole/sprite.texture = preload('res://assets/whack_a_mole/whack_anão.png')
+	else:
+		$mole/sprite.texture = preload('res://assets/whack_a_mole/whack_refem.png')
+	
 	_mole_action()
 
 func _mole_action():
-	$anim.play('event')
-	await $anim.animation_finished
-	$timer.wait_time = randf_range(3,7)
+	$mole/anim.play('event')
+	await $mole/anim.animation_finished
+	$mole/timer.wait_time = randf_range(3,7)
 	happy = true
 
 ###################################################
@@ -50,3 +57,5 @@ func _mole_action():
 ###################################################
 #               ~ KeichiTS - 2024 ~               #
 ###################################################
+
+
