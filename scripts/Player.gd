@@ -62,7 +62,12 @@ func _chance_anim():
 
 
 func _death():
-	get_tree().reload_current_scene()
+	if get_parent().has_method('_reload_scene'):
+		get_parent()._reload_scene()
+		queue_free()
+		
+	else:
+		get_tree().reload_current_scene()
 
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #

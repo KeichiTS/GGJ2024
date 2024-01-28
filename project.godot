@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GGJ2024"
-run/main_scene="res://scenes/title/title.tscn"
+run/main_scene="res://scenes/caution/caution.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

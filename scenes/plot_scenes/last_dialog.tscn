@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://t8vryer2xqak"]
+
+[ext_resource type="Script" path="res://scripts/plot_scenes/last_dialog.gd" id="1_y7vw4"]
+[ext_resource type="PackedScene" uid="uid://b5ncmqsb7sm7r" path="res://scenes/dialog/dialog_system.tscn" id="2_k8dpo"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="3_vlto4"]
+
+[node name="last_dialog" type="Node"]
+script = ExtResource("1_y7vw4")
+
+[node name="dialog_system" parent="." instance=ExtResource("2_k8dpo")]
+
+[node name="Transition_screen" parent="." instance=ExtResource("3_vlto4")]

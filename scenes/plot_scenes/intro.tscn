@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu8tbik0pgmcx"]
+[gd_scene load_steps=4 format=3 uid="uid://cu8tbik0pgmcx"]
 
 [ext_resource type="Script" path="res://scripts/plot_scenes/intro.gd" id="1_vt7oc"]
 [ext_resource type="PackedScene" uid="uid://b5ncmqsb7sm7r" path="res://scenes/dialog/dialog_system.tscn" id="2_pctck"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="3_tgo6v"]
 
 [node name="intro" type="Node"]
 script = ExtResource("1_vt7oc")
 
 [node name="dialog_system" parent="." instance=ExtResource("2_pctck")]
+
+[node name="Transition_screen" parent="." instance=ExtResource("3_tgo6v")]
+oppened_curtains = true

@@ -1,39 +1,77 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddp1hybyj5ku"]
+[gd_scene load_steps=10 format=3 uid="uid://ddp1hybyj5ku"]
 
 [ext_resource type="Script" path="res://scripts/end/end.gd" id="1_kegnr"]
-[ext_resource type="FontFile" uid="uid://cpxc3ih7dbm0w" path="res://font/minimal5x7.ttf" id="2_smldd"]
+[ext_resource type="Texture2D" uid="uid://botf4lg2b77wp" path="res://assets/visual/valdisney castle_fundo.png" id="2_nsr5w"]
+[ext_resource type="Texture2D" uid="uid://cnxneb31bgh7t" path="res://assets/visual/valdisney castle_separado.png" id="3_0t66l"]
+[ext_resource type="FontFile" uid="uid://b77ga3epajhie" path="res://font/Pacifico-Regular.ttf" id="4_3giu4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82tca"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kchrx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpyee"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g34qq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdobx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="End" type="Node"]
 script = ExtResource("1_kegnr")
 
-[node name="Name" type="Label" parent="."]
-offset_right = 420.0
-offset_bottom = 128.0
+[node name="ValdisneyCastleFundo" type="Sprite2D" parent="."]
+texture = ExtResource("2_nsr5w")
+centered = false
+
+[node name="ValdisneyCastleSeparado" type="Sprite2D" parent="."]
+texture = ExtResource("3_0t66l")
+centered = false
+
+[node name="text" type="Label" parent="."]
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 376.0
+offset_bottom = 152.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_smldd")
-theme_override_font_sizes/font_size = 64
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_3giu4")
+theme_override_font_sizes/font_size = 35
 text = "Thanks for playing!"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="text2" type="Label" parent="."]
+offset_left = 44.0
+offset_top = 61.0
+offset_right = 376.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("4_3giu4")
+theme_override_font_sizes/font_size = 12
+text = "anyway"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="Button" type="Button" parent="."]
 offset_left = 135.0
-offset_top = 160.0
+offset_top = 180.0
 offset_right = 285.0
 offset_bottom = 231.0
-theme_override_fonts/font = ExtResource("2_smldd")
-theme_override_font_sizes/font_size = 32
-text = "Play again!"
-
-[node name="Credits" type="Label" parent="."]
-offset_top = 232.0
-offset_right = 420.0
-offset_bottom = 264.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_smldd")
+theme_override_fonts/font = ExtResource("4_3giu4")
 theme_override_font_sizes/font_size = 24
-text = "A game by: KeichiTS, JulioCastaway and Jaspior"
-horizontal_alignment = 1
-vertical_alignment = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_82tca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kchrx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qpyee")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_g34qq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cdobx")
+text = "Play again"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

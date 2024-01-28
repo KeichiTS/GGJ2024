@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk10aobgw0k6k"]
+[gd_scene load_steps=4 format=3 uid="uid://dk10aobgw0k6k"]
 
 [ext_resource type="Script" path="res://scripts/plot_scenes/whack_a_mole_dialog.gd" id="1_1tn1c"]
 [ext_resource type="PackedScene" uid="uid://b5ncmqsb7sm7r" path="res://scenes/dialog/dialog_system.tscn" id="2_u101v"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="3_hjs32"]
 
 [node name="whack_a_mole_dialog" type="Node"]
 script = ExtResource("1_1tn1c")
 
 [node name="dialog_system" parent="." instance=ExtResource("2_u101v")]
+
+[node name="Transition_screen" parent="." instance=ExtResource("3_hjs32")]
+oppened_curtains = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxg7w07kig4nm"]
+[gd_scene load_steps=12 format=3 uid="uid://dxg7w07kig4nm"]
 
 [ext_resource type="PackedScene" uid="uid://b08edfre7tjm8" path="res://scenes/runner/player.tscn" id="1_nq4t8"]
 [ext_resource type="Script" path="res://scripts/runner/runner.gd" id="1_qyw5y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://5ghnw7pveaup" path="res://assets/runner/bg_dloresta_arbustos e grama.png" id="4_4lm6j"]
 [ext_resource type="Script" path="res://scripts/runner/parallax.gd" id="4_y71kn"]
 [ext_resource type="Texture2D" uid="uid://uqx1vjoaqdj0" path="res://assets/runner/bg_dloresta_Chão.png" id="5_28n7c"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="10_6a2d7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iwbn"]
 size = Vector2(970, 32)
@@ -73,6 +74,7 @@ position = Vector2(475, 528)
 shape = SubResource("RectangleShape2D_2iwbn")
 
 [node name="Player" parent="." instance=ExtResource("1_nq4t8")]
+z_index = 0
 position = Vector2(48, 152)
 jump_velocity = -1200
 gravity = 6000
@@ -82,5 +84,8 @@ position = Vector2(528, 88)
 
 [node name="Counting_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Transition_screen" parent="." instance=ExtResource("10_6a2d7")]
+oppened_curtains = true
 
 [connection signal="timeout" from="Counting_timer" to="." method="_on_counting_timer_timeout"]

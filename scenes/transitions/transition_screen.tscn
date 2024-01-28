@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://bm6ds2x463adj"]
+
+[ext_resource type="Script" path="res://scripts/transitions/transition_screen.gd" id="1_kvx6q"]
+[ext_resource type="Texture2D" uid="uid://botf4lg2b77wp" path="res://assets/visual/valdisney castle_fundo.png" id="1_ljgbq"]
+[ext_resource type="Texture2D" uid="uid://cnxneb31bgh7t" path="res://assets/visual/valdisney castle_separado.png" id="2_udv7r"]
+[ext_resource type="FontFile" uid="uid://b77ga3epajhie" path="res://font/Pacifico-Regular.ttf" id="3_rcjfk"]
+
+[sub_resource type="Animation" id="Animation_2so3x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Curtain:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2jja0"]
+resource_name = "close_curtains"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Curtain:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -270), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_goucm"]
+resource_name = "open_curtains"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Curtain:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -270)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sltur"]
+_data = {
+"RESET": SubResource("Animation_2so3x"),
+"close_curtains": SubResource("Animation_2jja0"),
+"open_curtains": SubResource("Animation_goucm")
+}
+
+[node name="Transition_screen" type="Node"]
+script = ExtResource("1_kvx6q")
+
+[node name="Curtain" type="Node2D" parent="."]
+visible = false
+
+[node name="ValdisneyCastleFundo" type="Sprite2D" parent="Curtain"]
+texture = ExtResource("1_ljgbq")
+centered = false
+
+[node name="ValdisneyCastleSeparado" type="Sprite2D" parent="Curtain"]
+texture = ExtResource("2_udv7r")
+centered = false
+
+[node name="Name" type="Label" parent="Curtain"]
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 376.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_rcjfk")
+theme_override_font_sizes/font_size = 35
+text = "Gabriel Gabiru in the Castle of Delusion"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sltur")
+}

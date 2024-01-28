@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3advjbj1qvd"]
+[gd_scene load_steps=18 format=3 uid="uid://d3advjbj1qvd"]
 
 [ext_resource type="Script" path="res://scripts/whip_dwarf/whip_dwarf.gd" id="1_a5psn"]
-[ext_resource type="Texture2D" uid="uid://dffnwy2kwhwh4" path="res://icon.svg" id="2_ldy0a"]
+[ext_resource type="Texture2D" uid="uid://emypnlubdxbr" path="res://assets/runner/bg_dloresta_fundo.png" id="2_43uwm"]
+[ext_resource type="Texture2D" uid="uid://c6b5rii6grtwa" path="res://assets/whip_dwarf/arremesso de anao.png" id="2_j87qu"]
 [ext_resource type="FontFile" uid="uid://cpxc3ih7dbm0w" path="res://font/minimal5x7.ttf" id="3_njebh"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="4_sfyxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8336"]
 size = Vector2(24, 16)
@@ -62,14 +64,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:rotation")
+tracks/0/path = NodePath("dwarves:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dwarves:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(320, 128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dwarves:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vyonw"]
@@ -78,24 +104,71 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:rotation")
+tracks/0/path = NodePath("dwarves:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 2, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dwarves:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 3.14159, 6.28319]
+"values": [Vector2(320, 128), Vector2(320, 36)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dwarves:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_u8lpr"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dwarves:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5qddx"]
 _data = {
 "RESET": SubResource("Animation_r6ien"),
-"event": SubResource("Animation_vyonw")
+"event": SubResource("Animation_vyonw"),
+"idle": SubResource("Animation_u8lpr")
 }
 
 [node name="Whip_dwarf" type="Node"]
 script = ExtResource("1_a5psn")
+
+[node name="BgDlorestaFundo" type="Sprite2D" parent="."]
+modulate = Color(0.647059, 0.647059, 0.647059, 1)
+texture = ExtResource("2_43uwm")
+centered = false
 
 [node name="base" type="ColorRect" parent="."]
 offset_left = 40.0
@@ -111,7 +184,7 @@ offset_left = 48.0
 offset_top = 120.0
 offset_right = 72.0
 offset_bottom = 136.0
-color = Color(0.988235, 0, 0, 1)
+color = Color(0.827451, 0.827451, 0.827451, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area1"]
 z_index = 1
@@ -125,14 +198,14 @@ offset_left = 48.0
 offset_top = 136.0
 offset_right = 72.0
 offset_bottom = 184.0
-color = Color(0.945098, 0.894118, 0, 1)
+color = Color(0.7, 0.7, 0.7, 1)
 
 [node name="sprite2" type="ColorRect" parent="Area2"]
 offset_left = 48.0
 offset_top = 72.0
 offset_right = 72.0
 offset_bottom = 120.0
-color = Color(0.945098, 0.894118, 0, 1)
+color = Color(0.7, 0.7, 0.7, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area2"]
 z_index = 1
@@ -152,14 +225,14 @@ offset_left = 47.0
 offset_top = 24.0
 offset_right = 71.0
 offset_bottom = 72.0
-color = Color(0, 0.992157, 0.992157, 1)
+color = Color(0.168627, 0.168627, 0.168627, 1)
 
 [node name="sprite2" type="ColorRect" parent="Area3"]
 offset_left = 47.0
 offset_top = 184.0
 offset_right = 71.0
 offset_bottom = 232.0
-color = Color(0, 0.992157, 0.992157, 1)
+color = Color(0.168627, 0.168627, 0.168627, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area3"]
 z_index = 1
@@ -198,20 +271,24 @@ libraries = {
 "": SubResource("AnimationLibrary_5qddx")
 }
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="dwarves" type="Sprite2D" parent="."]
 position = Vector2(320, 128)
-texture = ExtResource("2_ldy0a")
+texture = ExtResource("2_j87qu")
+hframes = 5
 
 [node name="points" type="Label" parent="."]
-offset_left = 368.0
-offset_top = 8.0
-offset_right = 473.0
-offset_bottom = 31.0
+offset_left = 309.0
+offset_top = 7.0
+offset_right = 414.0
+offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("3_njebh")
 theme_override_font_sizes/font_size = 24
 text = "Points : XX"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Transition_screen" parent="." instance=ExtResource("4_sfyxo")]
+oppened_curtains = true
 
 [connection signal="area_entered" from="Area1" to="." method="_on_area_1_area_entered"]
 [connection signal="area_exited" from="Area1" to="." method="_on_area_1_area_exited"]

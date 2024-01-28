@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc0buvmgf4xtg"]
+[gd_scene load_steps=9 format=3 uid="uid://bc0buvmgf4xtg"]
 
 [ext_resource type="Script" path="res://scripts/whack_a_mole/whack_a_mole.gd" id="1_kcak3"]
 [ext_resource type="PackedScene" uid="uid://dcgjb6s3t1jnu" path="res://scenes/whack_a_mole/mole.tscn" id="2_h31a8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dldlad025a07g" path="res://assets/whack_a_mole/whack_cenario_fundo_alto.png" id="4_16nox"]
 [ext_resource type="Texture2D" uid="uid://lhdjbtaakoca" path="res://assets/whack_a_mole/whack_cenario_fundo_meio.png" id="5_avvrc"]
 [ext_resource type="Texture2D" uid="uid://bdlayntlglov4" path="res://assets/whack_a_mole/whack_cenario_fundo_baixo.png" id="6_3pqow"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="8_e82uh"]
 
 [node name="Whack_a_mole" type="Node"]
 script = ExtResource("1_kcak3")
@@ -72,5 +73,8 @@ vertical_alignment = 1
 
 [node name="Counting_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Transition_screen" parent="." instance=ExtResource("8_e82uh")]
+oppened_curtains = true
 
 [connection signal="timeout" from="Counting_timer" to="." method="_on_counting_timer_timeout"]

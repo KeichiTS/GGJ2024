@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6gkwgb711erq"]
+
+[ext_resource type="Script" path="res://scripts/plot_scenes/runner_dialog.gd" id="1_42ou4"]
+[ext_resource type="PackedScene" uid="uid://b5ncmqsb7sm7r" path="res://scenes/dialog/dialog_system.tscn" id="2_m8wyn"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="3_p0fqs"]
+
+[node name="runner_dialog" type="Node"]
+script = ExtResource("1_42ou4")
+
+[node name="dialog_system" parent="." instance=ExtResource("2_m8wyn")]
+
+[node name="Transition_screen" parent="." instance=ExtResource("3_p0fqs")]
+oppened_curtains = true
