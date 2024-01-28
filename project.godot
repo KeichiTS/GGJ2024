@@ -15,6 +15,10 @@ run/main_scene="res://scenes/caution/caution.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SfxManager="*res://sfx/sfx_manager.tscn"
+
 [dialogue_manager]
 
 general/balloon_path="res://dialog/balloon.tscn"

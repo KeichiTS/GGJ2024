@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddmavr7sdq2ci"]
+
+[ext_resource type="AudioStream" uid="uid://ctbwjfmfrir45" path="res://sfx/Mickey Mouse - Steamboat Willie - Whistle.mp3" id="1_qbpod"]
+[ext_resource type="Script" path="res://sfx/sfx_manager.gd" id="1_y74xu"]
+[ext_resource type="AudioStream" uid="uid://p3jqmpfrwwt5" path="res://sfx/Untitled-720p.wav" id="3_ecqml"]
+[ext_resource type="AudioStream" uid="uid://b5elq4v3cpyan" path="res://sfx/pancada-2.wav" id="4_4662v"]
+[ext_resource type="AudioStream" uid="uid://ctxwgftl7vxc6" path="res://sfx/resmungo-gato.wav" id="5_mjrl1"]
+
+[node name="SFX_Manager" type="Node"]
+script = ExtResource("1_y74xu")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_qbpod")
+volume_db = -10.0
+pitch_scale = 0.8
+autoplay = true
+stream_paused = true
+
+[node name="BGM_Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ecqml")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4662v")
+
+[node name="Anao" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mjrl1")
+volume_db = 5.0
+
+[connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]
+[connection signal="timeout" from="BGM_Timer" to="." method="_on_bgm_timer_timeout"]

@@ -30,6 +30,7 @@ func _move(x):
 			
 		if is_on_floor() or coyote_jump:
 			if Input.is_action_just_pressed("ui_jump"):
+				SfxManager.jumped()
 				velocity.y = jump_velocity
 				coyote_jump = false
 
@@ -62,6 +63,7 @@ func _chance_anim():
 
 
 func _death():
+	SfxManager.hited()
 	if get_parent().has_method('_reload_scene'):
 		get_parent()._reload_scene()
 		queue_free()

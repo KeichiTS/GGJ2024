@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctbwjfmfrir45"
+path="res://.godot/imported/Mickey Mouse - Steamboat Willie - Whistle.mp3-bedb949fe918612f0ba8a3a83dde3a16.mp3str"
+
+[deps]
+
+source_file="res://sfx/Mickey Mouse - Steamboat Willie - Whistle.mp3"
+dest_files=["res://.godot/imported/Mickey Mouse - Steamboat Willie - Whistle.mp3-bedb949fe918612f0ba8a3a83dde3a16.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

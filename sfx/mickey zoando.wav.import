@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bedjpit8m17m4"
+path="res://.godot/imported/mickey zoando.wav-6a6b05932574280ef4c8e7bb8484dde7.sample"
+
+[deps]
+
+source_file="res://sfx/mickey zoando.wav"
+dest_files=["res://.godot/imported/mickey zoando.wav-6a6b05932574280ef4c8e7bb8484dde7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

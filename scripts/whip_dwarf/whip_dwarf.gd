@@ -21,6 +21,8 @@ func _physics_process(delta):
 		paused = true
 		$bar_anim.pause()
 		$whip_anim.play('event')
+		SfxManager.hited()
+		SfxManager.anaoed()
 		$pause_timer.start()
 
 func _on_area_1_area_entered(area):

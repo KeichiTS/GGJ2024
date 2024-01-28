@@ -5,7 +5,10 @@ extends Node
 var change_scene : bool = false
 var points : int = 00
 @export var time_left : int = 60
+@onready var hand = $hand
 
+func _process(delta):
+	hand.global_position = get_viewport().get_mouse_position()
 
 func _ready():
 	$Points.text = "Points: " + str(points)

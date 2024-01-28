@@ -4,6 +4,7 @@ extends Node2D
 
 var happy : bool = true
 var falix_the_cat :bool = false
+var punch := preload("res://scenes/whack_a_mole/punch.tscn")
 
 func _ready():
 	randomize()
@@ -12,6 +13,10 @@ func _ready():
 	
 	
 func _on_mole_pressed():
+	var punched = punch.instantiate()
+	
+	$mole/sprite.add_child(punched)
+	
 	if happy == true:
 		$mole/anim2.play('event')
 		if get_parent().has_method('_add_points'):

@@ -184,7 +184,7 @@ offset_left = 48.0
 offset_top = 120.0
 offset_right = 72.0
 offset_bottom = 136.0
-color = Color(0.827451, 0.827451, 0.827451, 1)
+color = Color(0.545098, 0.545098, 0.545098, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area1"]
 z_index = 1
@@ -198,14 +198,14 @@ offset_left = 48.0
 offset_top = 136.0
 offset_right = 72.0
 offset_bottom = 184.0
-color = Color(0.7, 0.7, 0.7, 1)
+color = Color(0.356863, 0.356863, 0.356863, 1)
 
 [node name="sprite2" type="ColorRect" parent="Area2"]
 offset_left = 48.0
 offset_top = 72.0
 offset_right = 72.0
 offset_bottom = 120.0
-color = Color(0.7, 0.7, 0.7, 1)
+color = Color(0.356863, 0.356863, 0.356863, 1)
 
 [node name="shape" type="CollisionShape2D" parent="Area2"]
 z_index = 1
@@ -250,6 +250,14 @@ position = Vector2(48, 24)
 [node name="sprite" type="ColorRect" parent="bar"]
 offset_right = 24.0
 offset_bottom = 4.0
+
+[node name="ColorRect" type="ColorRect" parent="bar/sprite"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 22.0
+offset_bottom = 3.0
+color = Color(0, 0, 0, 1)
 
 [node name="shape" type="CollisionShape2D" parent="bar"]
 z_index = 1

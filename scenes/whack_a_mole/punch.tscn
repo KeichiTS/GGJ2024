@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://baw56nig761jg"]
+
+[ext_resource type="Texture2D" uid="uid://cwjmg0ty3yc0v" path="res://assets/whack_a_mole/pancada.png" id="1_8nw4m"]
+[ext_resource type="Script" path="res://scripts/whack_a_mole/punch.gd" id="2_5yu85"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmqvv"]
+atlas = ExtResource("1_8nw4m")
+region = Rect2(0, 0, 64, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceqqi"]
+atlas = ExtResource("1_8nw4m")
+region = Rect2(128, 0, 64, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il1lp"]
+atlas = ExtResource("1_8nw4m")
+region = Rect2(192, 0, 64, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxjos"]
+atlas = ExtResource("1_8nw4m")
+region = Rect2(256, 0, 64, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqsqa"]
+atlas = ExtResource("1_8nw4m")
+region = Rect2(320, 0, 64, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ulwx"]
+atlas = ExtResource("1_8nw4m")
+region = Rect2(64, 0, 64, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7m8mf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmqvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceqqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il1lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxjos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqsqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ulwx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="punch" type="AnimatedSprite2D"]
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_7m8mf")
+script = ExtResource("2_5yu85")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
