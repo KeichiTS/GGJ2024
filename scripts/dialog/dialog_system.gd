@@ -53,6 +53,7 @@ func _can_talk():
 				$label.queue_free()
 				$path_rect.queue_free()
 				$sprite.queue_free()
+				$sfx.queue_free()
 	
 
 func _on_timer_timeout():

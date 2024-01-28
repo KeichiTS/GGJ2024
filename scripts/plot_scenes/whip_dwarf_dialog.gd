@@ -22,18 +22,22 @@ func _ready():
 
 func _process(delta):
 	if line_counter == 3:
+		$dialog_system/sfx.pitch_scale = 1.2
 		$dialog_system/sprite.hide()
 		$dialog_system/sprite2.show()
 		
 	if line_counter == 5:
+		$dialog_system/sfx.pitch_scale = .64
 		$dialog_system/sprite.show()
 		$dialog_system/sprite2.hide()
 		
 	if line_counter == 7:
+		$dialog_system/sfx.pitch_scale = 1.2
 		$dialog_system/sprite.hide()
 		$dialog_system/sprite2.show()
 
 	if line_counter == 8:
+		$dialog_system/sfx.pitch_scale = .64
 		$dialog_system/sprite.show()
 		$dialog_system/sprite2.hide()
 	
