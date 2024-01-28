@@ -1,6 +1,6 @@
 extends call_dialog
 
-var next_scene : String = "res://scenes/whack_a_mole/whack_a_mole.tscn"
+var next_scene : String = "res://scenes/instruction_scenes/instruction_whack_a_mole.tscn"
 var change_scene : bool = false
 var lines: Array[String] = [
 	"7 dwarves? More like 700.",

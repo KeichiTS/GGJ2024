@@ -1,7 +1,7 @@
 extends call_dialog
 
 var change_scene : bool = false
-var next_scene : String = "res://scenes/whip_dwarf/whip_dwarf.tscn"
+var next_scene : String = "res://scenes/instruction_scenes/instruction_whip_dwarf.tscn"
 var lines: Array[String] = [
 	"Let me out of the big house, gal.",
 	"I want no beef you don't want it either.",

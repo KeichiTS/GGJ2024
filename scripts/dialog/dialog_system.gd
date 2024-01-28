@@ -36,8 +36,10 @@ func _can_talk():
 		$timer.start()
 		
 	if pivot == len(text):
+		$Name.show()
 		$anim.pause()
 		if Input.is_action_just_pressed("advance_dialog") and line_counter <= len(lines):
+			$Name.hide()
 			can_talk = true
 			pivot = 0
 			line_counter += 1 

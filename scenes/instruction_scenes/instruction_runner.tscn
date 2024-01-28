@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://cv1accwoy7lbc"]
+
+[ext_resource type="Texture2D" uid="uid://botf4lg2b77wp" path="res://assets/visual/valdisney castle_fundo.png" id="1_up54j"]
+[ext_resource type="Script" path="res://scripts/instruction_scenes/instruction_runner.gd" id="1_xmat2"]
+[ext_resource type="FontFile" uid="uid://b77ga3epajhie" path="res://font/Pacifico-Regular.ttf" id="2_ovr8y"]
+[ext_resource type="Texture2D" uid="uid://cujoljhwoai02" path="res://assets/runner/Sprite-0002.png" id="3_1mv8l"]
+[ext_resource type="Texture2D" uid="uid://bdo7ds3he2h00" path="res://assets/runner/anao.png" id="4_yy3ui"]
+[ext_resource type="PackedScene" uid="uid://bm6ds2x463adj" path="res://scenes/transitions/transition_screen.tscn" id="6_gk72i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyv5x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeupy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq61a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a5f4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlmp0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="instruction_runner" type="Node"]
+script = ExtResource("1_xmat2")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_up54j")
+centered = false
+
+[node name="text" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 420.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ovr8y")
+theme_override_font_sizes/font_size = 24
+text = "Press SPACE to jump over obstacles"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="text3" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 101.0
+offset_right = 420.0
+offset_bottom = 229.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ovr8y")
+theme_override_font_sizes/font_size = 24
+text = "Try to survive 60s to advance"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="text2" type="Label" parent="."]
+offset_left = 190.0
+offset_top = 18.0
+offset_right = 609.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ovr8y")
+theme_override_font_sizes/font_size = 8
+text = "if you need"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Sprite-0002" type="Sprite2D" parent="."]
+position = Vector2(196, 89)
+texture = ExtResource("3_1mv8l")
+hframes = 5
+vframes = 4
+frame = 15
+
+[node name="Anao" type="Sprite2D" parent="."]
+position = Vector2(221, 137)
+texture = ExtResource("4_yy3ui")
+hframes = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 135.0
+offset_top = 192.0
+offset_right = 285.0
+offset_bottom = 243.0
+theme_override_fonts/font = ExtResource("2_ovr8y")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dyv5x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aeupy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wq61a")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8a5f4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wlmp0")
+text = "OK!"
+
+[node name="Transition_screen" parent="." instance=ExtResource("6_gk72i")]
+oppened_curtains = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
